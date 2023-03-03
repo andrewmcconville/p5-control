@@ -1,6 +1,6 @@
 class Wonderer {
     constructor() {
-        this.position = createVector(width/2, 120);
+        this.position = createVector(width/2, 400);
         this.velocity = createVector(0, 0);
         this.mass = 50;
         this.resetDistance = this.mass * 4;
