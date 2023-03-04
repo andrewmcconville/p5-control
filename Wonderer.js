@@ -1,9 +1,11 @@
 class Wonderer {
     constructor() {
-        this.position = createVector(width/2, 400);
-        this.velocity = createVector(0, 0);
+        this.position = createVector((width / 2) + 10, (height / 2) - 10);
+        this.velocity = createVector(0, 0.10);
         this.mass = 50;
-        this.resetDistance = this.mass * 4;
+        this.particleResetMinDistance = 4;
+        this.particleResetMaxDistanceMultiplier = 6;
+        this.particleResetMaxDistance = this.mass * this.particleResetMaxDistanceMultiplier;
     }
 
     update() {
@@ -13,7 +15,7 @@ class Wonderer {
     draw() {
         this.update();
 
-        fill(255, 127);
+        //fill(255, 127);
         //circle(this.position.x, this.position.y, this.mass);
     }
 
@@ -22,8 +24,8 @@ class Wonderer {
         let distance = force.mag();
         let magnitude = gravity * ((this.mass * particle.mass) / (distance * distance));
 
-        if(distance < 4 || distance > this.resetDistance * random(0.5, 2)) {
-            particle.position = p5.Vector.add(this.position, p5.Vector.random2D().setMag(this.mass))
+        if(distance < this.particleResetMinDistance || distance > this.particleResetMaxDistance * random(0.5, 2)) {
+            particle.position = p5.Vector.add(wonderer.position, p5.Vector.random2D().setMag(random(wonderer.mass * 0.5, wonderer.mass * 2)));
             particle.velocity = p5.Vector.random2D().setMag(2);
         }
 
