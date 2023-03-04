@@ -1,7 +1,7 @@
 class Wonderer {
     constructor() {
-        this.position = createVector((width / 2) + 10, (height / 2) - 10);
-        this.velocity = createVector(0, 0.10);
+        this.position = createVector((width / 2) + 10, (height / 2) - 0);
+        this.velocity = createVector(0, 0.0);
         this.mass = 50;
         this.particleResetMinDistance = 4;
         this.particleResetMaxDistanceMultiplier = 6;
@@ -15,8 +15,12 @@ class Wonderer {
     draw() {
         this.update();
 
-        //fill(255, 127);
-        //circle(this.position.x, this.position.y, this.mass);
+        push();
+        strokeWeight(4);
+        point(this.position.x, this.position.y);
+        strokeWeight(1);
+        circle(this.position.x, this.position.y, this.mass);
+        pop();
     }
 
     attract(particle) {

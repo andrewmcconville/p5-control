@@ -10,6 +10,7 @@ function setup() {
   canvasCenter = createVector(width / 2, height / 2);
   rectMode(CENTER);
   noStroke();
+  stroke(0);
   noFill();
   wonderer = new Wonderer();
   controller = new Controller();
@@ -24,7 +25,14 @@ function setup() {
 }
 
 function draw() {
-  background(200);
+  background(200);  
+  
+  push();
+  strokeWeight(4);
+  point(canvasCenter.x, canvasCenter.y);
+  strokeWeight(1);
+  circle(canvasCenter.x, canvasCenter.y, canvasCenter.y);
+  pop();
 
   wonderer.draw();
   controller.draw();
