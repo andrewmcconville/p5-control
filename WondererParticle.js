@@ -4,7 +4,7 @@ class WondererParticle {
         this.velocity = config.velocity;
         this.acceleration = createVector(0, 0);
         this.mass = 1;
-        this.maxVelocity = 4;
+        this.maxVelocity = 3;
         this.opacity = 255;
         this.size = 10;
         this.parent = config.parent;

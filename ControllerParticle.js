@@ -4,18 +4,21 @@ class ControllerParticle {
         this.offset = config.offset;
         this.width = 200;
         this.height = 20;
-        this.speed = 0.25//random(2, 4);
-        this.position = createVector((this.width - this.speed) * 1.5, this.height * this.offset + this.height / 2);
+        this.position = createVector((this.width - this.velocity) * 2, (this.height * this.offset) + (this.height / 2) - (this.parent.lineCount * this.height / 2));
+        this.velocity = random(0, 2);
+        this.acceleration = random(0, 0.25);
     }
 
     update() {
-        if(this.width <= this.speed) {
+        if(this.width <= this.velocity) {
             this.width = 200;
-            this.speed = 0.25//random(2, 4);
+            this.velocity = random(0, 2);
+            this.acceleration = random(0, 0.25);
         }
 
-        this.position = createVector((this.width - this.speed) * 1.5, this.height * this.offset + this.height / 2);
-        this.width -= this.speed;
+        this.velocity += this.acceleration;
+        this.position = createVector((this.width - this.velocity) * 2, (this.height * this.offset) + (this.height / 2) - (this.parent.lineCount * this.height / 2));
+        this.width -= this.velocity;
     }
 
     draw() {
@@ -24,7 +27,7 @@ class ControllerParticle {
         push();
         translate(this.parent.position.x, this.parent.position.y);
         rotate(this.parent.angle);
-        fill(200);
+        fill(255, 255, 255, 32);
         rect(this.position.x, this.position.y, this.width, this.height);
         pop();
     }

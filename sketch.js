@@ -27,20 +27,14 @@ function setup() {
 function draw() {
   background(200);  
   
-  push();
-  strokeWeight(4);
-  point(canvasCenter.x, canvasCenter.y);
-  strokeWeight(1);
-  circle(canvasCenter.x, canvasCenter.y, canvasCenter.y);
-  pop();
-
-  wonderer.draw();
-  controller.draw();
   particles.forEach(particle => {
     wonderer.attract(particle);
     controller.repel(particle);
     particle.draw();
   });
+
+  wonderer.draw();
+  controller.draw();
 }
 
 function windowResized() {
