@@ -22,13 +22,10 @@ function setup() {
     lineWeight: 1,
     textOffset: createVector(6, 12),
     fill: color(255, 255, 255, 32),
-  });  
-  debugButton = createButton('toggle debug');
-  debugButton.position(4, 4);
-  debugButton.mousePressed(toggleDebug);
+  });
 }
 
-function toggleDebug(){
+function toggleDebug() {
   debugOverlay.toggleDebug();
 }
 
@@ -44,9 +41,7 @@ function draw() {
   wonderer.draw();
   controller.draw();
 
-  if(debugOverlay.enabled) {
-    debugOverlay.draw();
-  }
+  if(debugOverlay.enabled) debugOverlay.draw();
 }
 
 function windowResized() {

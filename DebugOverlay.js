@@ -6,6 +6,9 @@ class DebugOverlay {
         this.lineWeight = config.lineWeight;
         this.textOffset = config.textOffset;
         this.fill = config.fill;
+        this.debugButton = createButton('toggle debug');
+        this.debugButton.position(4, 4);
+        this.debugButton.mousePressed(toggleDebug);
     }
 
     toggleDebug() {
