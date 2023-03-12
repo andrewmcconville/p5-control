@@ -1,7 +1,7 @@
 class Wonderer {
     constructor() {
         this.position = createVector((width / 2) + 100, (height / 2) - 100);
-        this.velocity = createVector(0, 0.01);
+        this.velocity = createVector(-0.07, 0.1);
         this.mass = 50;
         this.bounds = 500;
         this.particleResetMinDistance = 4;
