@@ -1,16 +1,18 @@
-let gravity = 3;
+let gravity;
 let canvasCenter;
 let wonderer;
 let controller;
 let debugOverlay;
+let debugButton;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   canvasCenter = createVector(width / 2, height / 2);
   rectMode(CENTER);
   noStroke();
-  //stroke(0);
   noFill();
+
+  gravity = 3;
   wonderer = new Wonderer();
   controller = new Controller();
   debugOverlay = new DebugOverlay({
@@ -20,7 +22,14 @@ function setup() {
     lineWeight: 1,
     textOffset: createVector(6, 12),
     fill: color(255, 255, 255, 32),
-  });
+  });  
+  debugButton = createButton('toggle debug');
+  debugButton.position(4, 4);
+  debugButton.mousePressed(toggleDebug);
+}
+
+function toggleDebug(){
+  debugOverlay.toggleDebug();
 }
 
 function draw() {
@@ -35,7 +44,9 @@ function draw() {
   wonderer.draw();
   controller.draw();
 
-  if(debugOverlay.enabled) debugOverlay.draw();
+  if(debugOverlay.enabled) {
+    debugOverlay.draw();
+  }
 }
 
 function windowResized() {

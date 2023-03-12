@@ -8,6 +8,10 @@ class DebugOverlay {
         this.fill = config.fill;
     }
 
+    toggleDebug() {
+        this.enabled = !this.enabled;
+    }
+
     draw() {
         push();
 
