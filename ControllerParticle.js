@@ -25,6 +25,10 @@ class ControllerParticle {
         this.update();
 
         push();
+        if(debugOverlay.enabled) {
+            strokeWeight(1);
+            stroke(0)
+        }
         translate(this.parent.position.x, this.parent.position.y);
         rotate(this.parent.angle);
         fill(255, 255, 255, 32);

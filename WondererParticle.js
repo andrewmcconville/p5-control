@@ -28,6 +28,10 @@ class WondererParticle {
         this.update();
 
         push();
+        if(debugOverlay.enabled) {
+            strokeWeight(1);
+            stroke(0)
+        }
         fill(255, this.opacity - 20);
         rect(this.position.x, this.position.y, this.size);
         pop();
