@@ -1,13 +1,14 @@
 class Wonderer {
     constructor() {
-        this.position = createVector((width / 2) + 100, (height / 2) - 100);
-        this.velocity = createVector(-0.07, 0.1);
+        this.position = createVector((width / 2), (height / 2));
+        this.velocity = createVector(1.00, 1.00);
         this.mass = 50;
         this.bounds = 500;
+        this.bounceDistance = 10;
         this.particleResetMinDistance = 4;
         this.particleResetMaxDistanceMultiplier = 6;
         this.particleResetMaxDistance = this.mass * this.particleResetMaxDistanceMultiplier;
-        this.particleCount = 500;
+        this.particleCount = 400;
         this.particles = [];
 
         this.setup();
@@ -20,11 +21,26 @@ class Wonderer {
                 velocity: p5.Vector.random2D().setMag(random(2)),
                 parent: this,
             }));
-          }
+        }
+        
+        console.log(`velocity: ${this.velocity}`);
+        console.log(`heading: ${this.velocity.heading()}`);
+        console.log(`distance: ${p5.Vector.sub(this.position, canvasCenter).mag()}`);
     }
 
     update() {
+        //this.velocity.ma
+
         this.position.add(this.velocity);
+
+        if(p5.Vector.sub(this.position, canvasCenter).mag() > ((this.bounds / 2) - this.bounceDistance)) {
+            let randomDirection = random() > 0.5 ? -1 : 1;
+            this.velocity.setHeading(this.velocity.heading() + (PI) + (PI/36 * randomDirection));
+            this.position = p5.Vector.sub(wonderer.position, canvasCenter).setMag((wonderer.bounds / 2) - this.bounceDistance).add(canvasCenter);
+            console.log(`velocity: ${this.velocity}`);
+            console.log(`heading: ${this.velocity.heading()}`);
+            //noLoop();
+        }
     }
 
     draw() {
