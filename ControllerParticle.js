@@ -27,11 +27,13 @@ class ControllerParticle {
         push();
         if(debugOverlay.enabled) {
             strokeWeight(1);
-            stroke(0)
+            stroke(0);
+            fill(255, 255, 255, 32);
+        } else {            
+            fill(120, 20, 20, 255);
         }
         translate(this.parent.position.x, this.parent.position.y);
         rotate(this.parent.angle);
-        fill(255, 255, 255, 32);
         rect(this.position.x, this.position.y, this.width, this.height);
         pop();
     }

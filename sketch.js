@@ -30,7 +30,11 @@ function toggleDebug() {
 }
 
 function draw() {
-  background(200);  
+  if(debugOverlay.enabled) {
+    background(200);
+  } else {
+    background(55, 37, 73);
+  }
   
   wonderer.particles.forEach(particle => {
     wonderer.attract(particle);

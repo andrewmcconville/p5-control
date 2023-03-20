@@ -5,6 +5,7 @@ class Controller {
         this.position = p5.Vector.sub(wonderer.position, canvasCenter).setMag(wonderer.bounds / 2).add(canvasCenter);
         this.controllerCenter = p5.Vector.sub(this.position, canvasCenter).setMag(this.width / 2).add(this.position);
         this.mass = 250;
+        this.maxMass = 25000;
         this.radius = canvasCenter.y;
         this.angle = p5.Vector.sub(this.position, wonderer.position).heading();
         this.lineCount = 7;
@@ -26,6 +27,7 @@ class Controller {
         this.position = p5.Vector.sub(wonderer.position, canvasCenter).setMag(wonderer.bounds / 2).add(canvasCenter);
         this.controllerCenter = p5.Vector.sub(this.position, canvasCenter).setMag(this.width / 2).add(this.position);
         this.angle = p5.Vector.sub(this.position, wonderer.position).heading();
+        this.mass = this.maxMass / (p5.Vector.sub(wonderer.position, this.position).mag() / 2);
     }
 
     draw() {

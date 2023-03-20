@@ -2,8 +2,9 @@ class Wonderer {
     constructor() {
         this.position = createVector((width / 2), (height / 2));
         this.velocity = createVector(1.00, 1.00);
+        //this.acceleration = createVector(0, 0);
         this.mass = 50;
-        this.bounds = 500;
+        this.bounds = 800;
         this.bounceDistance = 10;
         this.particleResetMinDistance = 4;
         this.particleResetMaxDistanceMultiplier = 6;
@@ -29,8 +30,7 @@ class Wonderer {
     }
 
     update() {
-        //this.velocity.ma
-
+        //this.velocity.add(this.acceleration);
         this.position.add(this.velocity);
 
         if(p5.Vector.sub(this.position, canvasCenter).mag() > ((this.bounds / 2) - this.bounceDistance)) {
@@ -41,6 +41,8 @@ class Wonderer {
             console.log(`heading: ${this.velocity.heading()}`);
             //noLoop();
         }
+
+        //this.acceleration.mult(0);
     }
 
     draw() {
