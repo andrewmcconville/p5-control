@@ -4,7 +4,7 @@ class Wonderer {
         this.velocity = createVector(1.00, 1.00);
         //this.acceleration = createVector(0, 0);
         this.mass = 50;
-        this.bounds = 800;
+        this.bounds = (windowWidth < windowHeight ? windowWidth : windowHeight) - 100;
         this.bounceDistance = 10;
         this.particleResetMinDistance = 4;
         this.particleResetMaxDistanceMultiplier = 6;
@@ -24,9 +24,9 @@ class Wonderer {
             }));
         }
         
-        console.log(`velocity: ${this.velocity}`);
-        console.log(`heading: ${this.velocity.heading()}`);
-        console.log(`distance: ${p5.Vector.sub(this.position, canvasCenter).mag()}`);
+        // console.log(`velocity: ${this.velocity}`);
+        // console.log(`heading: ${this.velocity.heading()}`);
+        // console.log(`distance: ${p5.Vector.sub(this.position, canvasCenter).mag()}`);
     }
 
     update() {
@@ -37,8 +37,8 @@ class Wonderer {
             let randomDirection = random() > 0.5 ? -1 : 1;
             this.velocity.setHeading(this.velocity.heading() + (PI) + (PI/36 * randomDirection));
             this.position = p5.Vector.sub(wonderer.position, canvasCenter).setMag((wonderer.bounds / 2) - this.bounceDistance).add(canvasCenter);
-            console.log(`velocity: ${this.velocity}`);
-            console.log(`heading: ${this.velocity.heading()}`);
+            // console.log(`velocity: ${this.velocity}`);
+            // console.log(`heading: ${this.velocity.heading()}`);
             //noLoop();
         }
 
